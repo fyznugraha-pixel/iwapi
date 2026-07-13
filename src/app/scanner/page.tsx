@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Html5Qrcode } from 'html5-qrcode';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw, ScanLine, Users, Keypad } from 'lucide-react';
+import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw, ScanLine, Users, Keyboard } from 'lucide-react';
 import { AuroraBackground } from '@/components/AuroraBackground';
 
 type ScanStatus = 'idle' | 'loading' | 'success' | 'already_scanned' | 'invalid' | 'error';
@@ -225,7 +225,7 @@ export default function ScannerPage() {
             Daftar Peserta
           </button>
           <button className="bg-white/5 border border-white/10 text-white font-medium py-3.5 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2 text-sm shadow-lg">
-            <Keypad className="w-4 h-4 text-zinc-400" />
+            <Keyboard className="w-4 h-4 text-zinc-400" />
             Input Manual
           </button>
         </div>
