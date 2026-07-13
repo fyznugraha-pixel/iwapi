@@ -140,11 +140,11 @@ export default function Home() {
             className="lg:col-span-5 flex flex-col justify-center pt-2 sm:pt-0"
           >
             {/* Sponsors Section on Pill */}
-            <div className="relative w-full overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl py-6 rounded-[3rem] shadow-[0_8px_40px_rgba(0,242,254,0.15)] mb-10 group">
+            <div className="relative w-full overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl py-5 sm:py-6 rounded-[3rem] shadow-[0_8px_40px_rgba(0,242,254,0.15)] mb-10 group">
               <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 group-hover:via-white/10 transition-colors duration-700"></div>
               
-              <div className="flex flex-col gap-6 w-full relative">
-                {/* Row 1 (Left to Right) */}
+              <div className="flex flex-col w-full relative">
+                {/* Marquee Row */}
                 <motion.div 
                   className="flex gap-4 sm:gap-6 min-w-max items-center pr-4 sm:pr-6"
                   animate={{ x: ["0%", "-50%"] }}
@@ -164,32 +164,6 @@ export default function Home() {
                     { src: '/logo/iwapi.png', alt: 'IWAPI' }
                   ].map((logo, idx) => (
                     <div key={`r1-${idx}`} className="bg-white/90 backdrop-blur-sm rounded-2xl p-3 sm:p-4 shrink-0 flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-[1.15] hover:z-10 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] cursor-pointer h-16 w-28 sm:h-20 sm:w-36 border border-white/20">
-                      <img src={logo.src} alt={logo.alt} className="h-full w-full object-contain mix-blend-multiply" />
-                    </div>
-                  ))}
-                </motion.div>
-
-                {/* Row 2 (Right to Left) */}
-                <motion.div 
-                  className="flex gap-4 sm:gap-6 min-w-max items-center pr-4 sm:pr-6"
-                  animate={{ x: ["-50%", "0%"] }}
-                  transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-                >
-                  {[
-                    // Reversed/Shuffled order for Row 2
-                    { src: '/logo/iwapi.png', alt: 'IWAPI' },
-                    { src: '/logo/folago.jpeg', alt: 'Folago' },
-                    { src: '/logo/evermor.png', alt: 'Evermos' },
-                    { src: '/logo/tactlink.png', alt: 'Tactlink' },
-                    { src: '/logo/beliemas.png', alt: 'Beli Emas' },
-                    // Duplicate for seamless infinite scrolling
-                    { src: '/logo/iwapi.png', alt: 'IWAPI' },
-                    { src: '/logo/folago.jpeg', alt: 'Folago' },
-                    { src: '/logo/evermor.png', alt: 'Evermos' },
-                    { src: '/logo/tactlink.png', alt: 'Tactlink' },
-                    { src: '/logo/beliemas.png', alt: 'Beli Emas' }
-                  ].map((logo, idx) => (
-                    <div key={`r2-${idx}`} className="bg-white/90 backdrop-blur-sm rounded-2xl p-3 sm:p-4 shrink-0 flex items-center justify-center shadow-lg transition-transform duration-300 hover:scale-[1.15] hover:z-10 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] cursor-pointer h-16 w-28 sm:h-20 sm:w-36 border border-white/20">
                       <img src={logo.src} alt={logo.alt} className="h-full w-full object-contain mix-blend-multiply" />
                     </div>
                   ))}
