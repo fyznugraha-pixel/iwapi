@@ -140,12 +140,34 @@ export default function Home() {
             className="lg:col-span-5 flex flex-col justify-center pt-2 sm:pt-0"
           >
             {/* Sponsors Section on Pill */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-10 bg-white/90 backdrop-blur-md p-3 px-5 sm:p-4 sm:px-6 rounded-full shadow-[0_0_30px_rgba(0,242,254,0.15)] w-full">
-              <img src="/logo/beliemas.png" alt="Beli Emas" className="h-5 sm:h-7 md:h-8 object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110 cursor-pointer" />
-              <img src="/logo/tactlink.png" alt="Tactlink" className="h-5 sm:h-7 md:h-8 object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110 cursor-pointer" />
-              <img src="/logo/evermor.png" alt="Evermos" className="h-5 sm:h-7 md:h-8 object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110 cursor-pointer" />
-              <img src="/logo/folago.jpeg" alt="Folago" className="h-5 sm:h-7 md:h-8 object-contain mix-blend-multiply rounded-md transition-transform duration-300 hover:scale-110 cursor-pointer" />
-              <img src="/logo/iwapi.png" alt="IWAPI" className="h-5 sm:h-7 md:h-8 object-contain mix-blend-multiply transition-transform duration-300 hover:scale-110 cursor-pointer" />
+            <div className="relative w-full overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl p-4 sm:p-5 rounded-[2.5rem] shadow-[0_8px_40px_rgba(0,242,254,0.15)] mb-10 group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 group-hover:via-white/10 transition-colors duration-700"></div>
+              
+              <div className="flex overflow-hidden w-full relative rounded-2xl">
+                <motion.div 
+                  className="flex gap-4 sm:gap-6 min-w-max items-center pr-4 sm:pr-6"
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{ ease: "linear", duration: 15, repeat: Infinity }}
+                >
+                  {[
+                    { src: '/logo/beliemas.png', alt: 'Beli Emas' },
+                    { src: '/logo/tactlink.png', alt: 'Tactlink' },
+                    { src: '/logo/evermor.png', alt: 'Evermos' },
+                    { src: '/logo/folago.jpeg', alt: 'Folago' },
+                    { src: '/logo/iwapi.png', alt: 'IWAPI' },
+                    // Duplicate for seamless infinite scrolling
+                    { src: '/logo/beliemas.png', alt: 'Beli Emas' },
+                    { src: '/logo/tactlink.png', alt: 'Tactlink' },
+                    { src: '/logo/evermor.png', alt: 'Evermos' },
+                    { src: '/logo/folago.jpeg', alt: 'Folago' },
+                    { src: '/logo/iwapi.png', alt: 'IWAPI' }
+                  ].map((logo, idx) => (
+                    <div key={idx} className="bg-white/5 backdrop-blur-xl rounded-2xl p-3 sm:p-4 shrink-0 flex items-center justify-center shadow-[0_8px_32px_rgba(0,242,254,0.1)] transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-[0_0_30px_rgba(0,242,254,0.2)] cursor-pointer h-16 w-28 sm:h-20 sm:w-36 md:h-24 md:w-44 border border-white/10 group-hover:border-white/20">
+                      <img src={logo.src} alt={logo.alt} className="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-300" />
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
 
             <div className="inline-flex">
