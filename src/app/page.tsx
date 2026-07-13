@@ -411,13 +411,13 @@ export default function Home() {
                       <div className="mt-8 flex flex-col items-center justify-center gap-2 border-t border-slate-200 dark:border-white/10 pt-6">
                         <p className="text-slate-500 dark:text-zinc-400 text-sm">Butuh bantuan pendaftaran? Hubungi:</p>
                         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-                          <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 dark:text-zinc-300 hover:text-primary-dark dark:hover:text-primary transition-colors flex items-center gap-2">
+                          <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="group text-sm text-slate-600 dark:text-zinc-300 hover:text-primary-dark dark:hover:text-primary transition-colors flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(0,242,254,0.5)]"></span>
-                            Avi: <span className="font-bold text-slate-900 dark:text-white">0856-0350-0816</span>
+                            Avi: <span className="font-bold text-slate-900 dark:text-white group-hover:text-primary-dark dark:group-hover:text-primary transition-colors">0856-0350-0816</span>
                           </a>
-                          <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 dark:text-zinc-300 hover:text-secondary transition-colors flex items-center gap-2">
+                          <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="group text-sm text-slate-600 dark:text-zinc-300 hover:text-secondary transition-colors flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_rgba(254,9,121,0.5)]"></span>
-                            Nisa: <span className="font-bold text-slate-900 dark:text-white">0821-2616-9071</span>
+                            Nisa: <span className="font-bold text-slate-900 dark:text-white group-hover:text-secondary transition-colors">0821-2616-9071</span>
                           </a>
                         </div>
                       </div>
