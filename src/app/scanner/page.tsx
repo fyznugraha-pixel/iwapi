@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Html5Qrcode } from 'html5-qrcode';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw, ScanLine, Users, Keypad } from 'lucide-react';
 import { AuroraBackground } from '@/components/AuroraBackground';
 
 type ScanStatus = 'idle' | 'loading' | 'success' | 'already_scanned' | 'invalid' | 'error';
@@ -13,6 +13,7 @@ export default function ScannerPage() {
   const [scannedName, setScannedName] = useState<string | null>(null);
   const [lastScannedId, setLastScannedId] = useState<string | null>(null);
   const [isCameraActive, setIsCameraActive] = useState(false);
+  const [scannedCount, setScannedCount] = useState(0);
   const scannerRef = useRef<Html5Qrcode | null>(null);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function ScannerPage() {
             if (result.status === 'success') {
               setScanStatus('success');
               setScannedName(result.nama);
+              setScannedCount(prev => prev + 1);
             } else if (result.status === 'already_scanned') {
               setScanStatus('already_scanned');
               setScannedName(result.nama);
@@ -97,6 +99,21 @@ export default function ScannerPage() {
     <AuroraBackground className="bg-[#070713] flex flex-col items-center justify-center p-4 sm:p-8 min-h-screen">
       <div className="relative z-10 w-full max-w-sm mx-auto">
         
+        {/* Header Dashboard */}
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-heading font-bold text-white flex items-center gap-2">
+              <ScanLine className="w-6 h-6 text-yellow-500" />
+              Scanner Area
+            </h1>
+            <p className="text-zinc-400 text-sm mt-1">Sistem Validasi Tiket Cepat</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-2xl px-4 py-2 flex flex-col items-center justify-center shadow-lg">
+            <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold mb-0.5">Hadir</span>
+            <span className="text-xl font-black text-yellow-500 leading-none">{scannedCount}</span>
+          </div>
+        </div>
+
         {/* Main Camera / Placeholder View */}
         <div className="rounded-[2rem] overflow-hidden border border-white/10 bg-[#0C0C14] shadow-2xl relative">
           
@@ -200,6 +217,23 @@ export default function ScannerPage() {
 
           </div>
         </div>
+
+        {/* Bottom Actions */}
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          <button className="bg-white/5 border border-white/10 text-white font-medium py-3.5 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2 text-sm shadow-lg">
+            <Users className="w-4 h-4 text-zinc-400" />
+            Daftar Peserta
+          </button>
+          <button className="bg-white/5 border border-white/10 text-white font-medium py-3.5 rounded-xl hover:bg-white/10 transition-colors flex items-center justify-center gap-2 text-sm shadow-lg">
+            <Keypad className="w-4 h-4 text-zinc-400" />
+            Input Manual
+          </button>
+        </div>
+        
+        <p className="text-center text-zinc-600 text-xs mt-8 font-medium tracking-wide">
+          Secured by Tactlink Technology
+        </p>
+
       </div>
     </AuroraBackground>
   );
