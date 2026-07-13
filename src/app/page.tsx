@@ -7,6 +7,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { AuroraBackground } from '@/components/AuroraBackground';
 import { ShinyText } from '@/components/ShinyText';
 import { SpotlightCard } from '@/components/SpotlightCard';
+import TactlinkSupportSection from '@/components/TactlinkSupportSection';
 
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -275,23 +276,23 @@ export default function Home() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="space-y-1.5">
                         <label className="text-sm font-medium text-zinc-300 ml-1">Nama Lengkap Sesuai KTP <span className="text-secondary">*</span></label>
-                        <input type="text" name="fullName" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: Budi Santoso" />
+                        <input type="text" name="fullName" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: Fayiz Apriwansyah" />
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="space-y-1.5">
                           <label className="text-sm font-medium text-zinc-300 ml-1">Alamat Email <span className="text-secondary">*</span></label>
-                          <input type="email" name="email" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: budi@email.com" />
+                          <input type="email" name="email" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: fyznugraha@email.com" />
                         </div>
                         <div className="space-y-1.5">
                           <label className="text-sm font-medium text-zinc-300 ml-1">No. WhatsApp Aktif <span className="text-secondary">*</span></label>
-                          <input type="tel" name="whatsapp" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: 081234567890" />
+                          <input type="tel" name="whatsapp" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: 087794693241" />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="space-y-1.5">
                           <label className="text-sm font-medium text-zinc-300 ml-1">Username TikTok <span className="text-secondary">*</span></label>
-                          <input type="text" name="tiktokUsername" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: @budisantoso" />
+                          <input type="text" name="tiktokUsername" required className="w-full glass-input px-4 py-3.5" placeholder="Contoh: @faizngraha" />
                         </div>
                         <div className="space-y-1.5">
                           <label className="text-sm font-medium text-zinc-300 ml-1">Jumlah Followers <span className="text-secondary">*</span></label>
@@ -301,7 +302,7 @@ export default function Home() {
 
                       <div className="space-y-1.5">
                         <label className="text-sm font-medium text-zinc-300 ml-1">Link Akun TikTok <span className="text-secondary">*</span></label>
-                        <input type="url" name="tiktokLink" required className="w-full glass-input px-4 py-3.5" placeholder="https://tiktok.com/@budi" />
+                        <input type="url" name="tiktokLink" required className="w-full glass-input px-4 py-3.5" placeholder="https://tiktok.com/@faizngraha" />
                       </div>
 
                       <div className="pt-4 mt-8 border-t border-white/10">
@@ -364,28 +365,33 @@ export default function Home() {
                           'Daftar Sekarang'
                         )}
                       </button>
+
+                      <div className="mt-8 flex flex-col items-center justify-center gap-2 border-t border-white/10 pt-6">
+                        <p className="text-zinc-400 text-sm">Butuh bantuan pendaftaran? Hubungi:</p>
+                        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
+                          <a href="https://wa.me/6285603500816" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-300 hover:text-primary transition-colors flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-primary/50 shadow-[0_0_10px_rgba(0,242,254,0.5)]"></span>
+                            Avi: <span className="font-bold text-white">0856-0350-0816</span>
+                          </a>
+                          <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-300 hover:text-secondary transition-colors flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-secondary/50 shadow-[0_0_10px_rgba(254,9,121,0.5)]"></span>
+                            Fitri: <span className="font-bold text-white">0821-2616-9071</span>
+                          </a>
+                        </div>
+                      </div>
                     </form>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-            
-            <div className="mt-8 flex flex-col items-center justify-center gap-2 border-t border-white/5 pt-6">
-              <p className="text-zinc-500 text-sm">Butuh bantuan pendaftaran? Hubungi:</p>
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-                <a href="https://wa.me/6285603500816" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-400 hover:text-primary transition-colors flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary/50"></span>
-                  Avi: <span className="font-medium text-white">0856-0350-0816</span>
-                </a>
-                <a href="https://wa.me/6282126169071" target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-400 hover:text-secondary transition-colors flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-secondary/50"></span>
-                  Fitri: <span className="font-medium text-white">0821-2616-9071</span>
-                </a>
-              </div>
-            </div>
           </motion.div>
           
         </div>
+      </div>
+      
+      {/* Tactlink Support Section at the bottom */}
+      <div className="w-full mt-20 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+        <TactlinkSupportSection noBackground={true} />
       </div>
     </AuroraBackground>
   );

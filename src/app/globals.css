@@ -35,6 +35,19 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
+/* Hilangkan tombol panah atas/bawah pada input number secara global */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
 @layer utilities {
   .glass-card {
     @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
@@ -44,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 focus:bg-white/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all outline-none rounded-xl;
   }
   
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
