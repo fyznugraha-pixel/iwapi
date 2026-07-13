@@ -98,8 +98,7 @@ export default function ScannerPage() {
   // --- UI RENDERERS ---
   if (!isAuthenticated) {
     return (
-      <main className="min-h-screen relative flex items-center justify-center p-4">
-        <AuroraBackground />
+      <AuroraBackground className="flex items-center justify-center p-4">
         <div className="relative z-10 w-full max-w-sm">
           <div className="glass-card rounded-[2rem] p-8 text-center shadow-[0_0_50px_rgba(0,242,254,0.15)] border border-white/10">
             <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(0,242,254,0.3)]">
@@ -129,13 +128,12 @@ export default function ScannerPage() {
             </form>
           </div>
         </div>
-      </main>
+      </AuroraBackground>
     );
   }
 
   return (
-    <main className="min-h-screen relative bg-zinc-950 flex flex-col items-center p-4 sm:p-8">
-      <AuroraBackground />
+    <AuroraBackground className="bg-zinc-950 flex flex-col items-center p-4 sm:p-8">
       
       <div className="relative z-10 w-full max-w-md mx-auto flex flex-col h-full">
         {/* Header */}
@@ -228,6 +226,6 @@ export default function ScannerPage() {
           font-family: inherit !important;
         }
       `}} />
-    </main>
+    </AuroraBackground>
   );
 }
