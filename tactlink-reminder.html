@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Social Commerce - E-Ticket & Tactlink</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f4f5; color: #18181b; -webkit-font-smoothing: antialiased;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f4f5; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);">
+          
+          <!-- Header with Logos -->
+          <tr>
+            <td align="center" style="background-color: #ffffff; padding: 30px 20px; border-bottom: 4px solid #0ea5e9;">
+              <p style="margin: 0 0 10px 0; font-size: 12px; color: #64748b; font-weight: bold; text-transform: uppercase;">Organized by</p>
+              <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/iwapi.png" alt="IWAPI" style="height: 50px; margin-bottom: 20px;" />
+              
+              <p style="margin: 0 0 10px 0; font-size: 12px; color: #64748b; font-weight: bold; text-transform: uppercase;">In Collaboration With</p>
+              <div style="text-align: center;">
+                <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/beliemas.png" alt="Beli Emas" style="height: 35px; margin: 0 10px; vertical-align: middle;" />
+                <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/evermor.png" alt="Evermos" style="height: 35px; margin: 0 10px; vertical-align: middle;" />
+                <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/folago.jpeg" alt="Folago" style="height: 35px; margin: 0 10px; vertical-align: middle;" />
+                <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/tactlink.png" alt="Tactlink" style="height: 35px; margin: 0 10px; vertical-align: middle;" />
+              </div>
+            </td>
+          </tr>
+
+          <!-- Main Content -->
+          <tr>
+            <td style="padding: 40px 30px; background-color: #ffffff;">
+              <h2 style="margin: 0 0 20px 0; font-size: 24px; font-weight: 800; color: #0ea5e9; text-align: center;">Pendaftaran Berhasil!</h2>
+              <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 700; color: #18181b;">Halo, {{FULL_NAME}}!</h3>
+              
+              <p style="margin: 0 0 15px 0; font-size: 15px; line-height: 24px; color: #3f3f46;">
+                Terima kasih telah mendaftar di acara <strong>TikTok Social Commerce</strong>. Pembayaran Anda telah diverifikasi.
+              </p>
+              
+              <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 24px; color: #3f3f46;">
+                Berikut adalah detail E-Ticket Anda:
+              </p>
+
+              <!-- Ticket Details -->
+              <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px; background: #f8fafc; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0;">
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0; width: 30%;"><b>Ticket ID</b></td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0; font-family: monospace; font-size: 16px; color: #0ea5e9;"><strong>{{TICKET_ID}}</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0;"><b>Tanggal</b></td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0;">Kamis, 23 Juli 2026</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0;"><b>Waktu</b></td>
+                  <td style="padding: 12px 15px; border-bottom: 1px solid #e2e8f0;">08.00 WIB - Selesai</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 15px;"><b>Lokasi</b></td>
+                  <td style="padding: 12px 15px;">
+                    Evermos Center<br/>
+                    Jl. Dago No.95, Lb. Siliwangi,<br/>
+                    Kecamatan Coblong, Kota Bandung
+                  </td>
+                </tr>
+              </table>
+
+              <!-- QR Code -->
+              <div style="text-align: center; margin-bottom: 40px;">
+                <p style="margin: 0 0 15px 0; font-size: 15px; color: #18181b; font-weight: 600;">Tunjukkan QR Code ini kepada panitia saat registrasi ulang di lokasi:</p>
+                <div style="display: inline-block; padding: 15px; background: white; border: 2px solid #0ea5e9; border-radius: 16px; box-shadow: 0 4px 6px rgba(14, 165, 233, 0.2);">
+                  <img src="https://quickchart.io/qr?text={{TICKET_ID}}&size=300&margin=1" alt="QR Code" style="display: block; width: 250px; height: 250px;" />
+                </div>
+              </div>
+
+              <!-- Tactlink Section -->
+              <div style="background-color: #fefce8; border: 1px solid #fef08a; border-radius: 12px; padding: 25px; margin-bottom: 25px; text-align: center;">
+                <img src="https://raw.githubusercontent.com/fyznugraha-pixel/iwapi/main/public/logo/tactlink.png" alt="Logo Tactlink" width="120" style="display: block; margin: 0 auto 15px auto; width: 120px; height: auto;" />
+                <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #18181b;">Persiapan Check-in</h3>
+                <p style="margin: 0 0 15px 0; font-size: 15px; color: #3f3f46; line-height: 22px;">
+                  Agar proses masuk ke area event lebih cepat dan lancar tanpa antrean panjang, pastikan Anda sudah
+                  mengunduh dan meng-<em>install</em> aplikasi Tactlink di HP Anda.
+                </p>
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 15px;">
+                  <tr>
+                    <td align="center" valign="middle" style="padding: 10px 0;">
+                      <a href="https://play.google.com/store/apps/details?id=com.tactlink.app" style="display: inline-block; margin: 0 10px; vertical-align: middle;">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Dapatkan di Google Play" style="height: 60px; border: 0; display: block;" />
+                      </a>
+                      <a href="https://apps.apple.com/id/app/tactlink/id1469516661" style="display: inline-block; margin: 0 10px; vertical-align: middle;">
+                        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1276560000" alt="Unduh di App Store" style="height: 40px; border: 0; display: block;" />
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+                <p style="margin: 0; font-size: 13px; color: #71717a;">Gunakan email yang sama dengan email registrasi ini untuk login.</p>
+              </div>
+
+              <!-- Tutorial Video -->
+              <div style="border-top: 1px solid #e2e8f0; padding-top: 25px; margin-bottom: 25px; text-align: center;">
+                <h3 style="margin: 0 0 10px 0; font-size: 18px; color: #18181b;">Cara Pakai Tactlink</h3>
+                <p style="margin: 0 0 15px 0; font-size: 14px; color: #3f3f46; line-height: 22px;">
+                  Tonton video tutorial singkat ini tentang cara registrasi akun dan cara check-in pada saat hari H nanti:
+                </p>
+                <a href="https://youtube.com/shorts/JuYtU3TVvYo?si=59D_rAYEUXMxZjjj" style="display: inline-block; background-color: #ec3f73; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px;">Tonton Tutorial</a>
+              </div>
+
+              <p style="margin: 0; font-size: 15px; line-height: 24px; color: #3f3f46; text-align: center;">
+                Sampai jumpa di hari H!<br><br>
+                Salam hangat,<br>
+                <strong>Tim IWAPI x TikTok Social Commerce</strong>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding: 30px; background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+              <p style="margin: 0; font-size: 13px; color: #64748b; line-height: 20px;">
+                © 2026 IWAPI - TikTok Social Commerce.<br>
+                Bandung, Jawa Barat, Indonesia.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

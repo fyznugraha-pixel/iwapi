@@ -2,17 +2,10 @@ import { NextResponse } from 'next/server';
 
 export async function POST() {
   try {
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    
-    if (!scriptUrl) {
-      return NextResponse.json({ status: 'error', message: 'Script URL not configured' }, { status: 500 });
-    }
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzZ9Ok4VZvBjKGooJcIsYcnFFU8E22L40jcbkWsSeciQ2xcw6w4VCYpzZFn0XpqI5g/exec";
 
     const response = await fetch(scriptUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({ action: 'getParticipants' }),
       cache: 'no-store'
     });

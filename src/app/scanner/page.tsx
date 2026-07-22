@@ -25,7 +25,11 @@ export default function ScannerPage() {
   const fetchParticipants = async () => {
     setIsLoadingParticipants(true);
     try {
-      const response = await fetch('/api/participants', { method: 'POST' });
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbzZ9Ok4VZvBjKGooJcIsYcnFFU8E22L40jcbkWsSeciQ2xcw6w4VCYpzZFn0XpqI5g/exec";
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'getParticipants' })
+      });
       const result = await response.json();
       if (result.status === 'success') {
         setParticipants(result.participants || []);
@@ -59,10 +63,13 @@ export default function ScannerPage() {
     }
 
     try {
-      const response = await fetch('/api/validate', {
+      const scriptUrl = "https://script.google.com/macros/s/AKfycbzZ9Ok4VZvBjKGooJcIsYcnFFU8E22L40jcbkWsSeciQ2xcw6w4VCYpzZFn0XpqI5g/exec";
+      const response = await fetch(scriptUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ticketId })
+        body: JSON.stringify({ 
+          action: 'validate',
+          ticketId: ticketId
+        })
       });
 
       const result = await response.json();
