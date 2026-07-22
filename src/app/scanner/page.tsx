@@ -33,7 +33,9 @@ export default function ScannerPage() {
       });
       const result = await response.json();
       if (result.status === 'success') {
-        setParticipants(result.participants || []);
+        const data = result.participants || [];
+        setParticipants(data);
+        setScannedCount(data.filter((p: Participant) => p.status === 'Hadir').length);
       } else {
         console.error(result.message);
       }
@@ -43,6 +45,11 @@ export default function ScannerPage() {
       setIsLoadingParticipants(false);
     }
   };
+
+  useEffect(() => {
+    // Fetch data peserta saat pertama kali buka scanner agar total Hadir akurat (real-time sinkron dengan database)
+    fetchParticipants();
+  }, []);
 
   useEffect(() => {
     if (showParticipantInfo) {
@@ -78,7 +85,8 @@ export default function ScannerPage() {
       if (result.status === 'success') {
         setScanStatus('success');
         setScannedName(result.nama);
-        setScannedCount(prev => prev + 1);
+        // Refresh daftar peserta di latar belakang untuk memastikan data tetap tersinkronisasi
+        fetchParticipants();
       } else if (result.status === 'already_scanned') {
         setScanStatus('already_scanned');
         setScannedName(result.nama);
