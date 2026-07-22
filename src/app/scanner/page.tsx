@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Html5Qrcode } from 'html5-qrcode';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw, ScanLine, Users, Keyboard } from 'lucide-react';
+import { Camera, CheckCircle2, XCircle, AlertCircle, RefreshCw, ScanLine, Users, Keyboard, Search } from 'lucide-react';
 import { AuroraBackground } from '@/components/AuroraBackground';
 
 type ScanStatus = 'idle' | 'loading' | 'success' | 'already_scanned' | 'invalid' | 'error';
@@ -20,6 +20,7 @@ export default function ScannerPage() {
   const [manualId, setManualId] = useState('');
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [isLoadingParticipants, setIsLoadingParticipants] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const scannerRef = useRef<Html5Qrcode | null>(null);
 
   const fetchParticipants = async () => {
@@ -292,7 +293,7 @@ export default function ScannerPage() {
                 exit={{ scale: 0.95, y: 20 }}
                 className="bg-white dark:bg-[#0C0C14] border border-slate-200 dark:border-white/10 p-6 rounded-3xl w-full max-w-md shadow-2xl relative overflow-hidden flex flex-col max-h-[80vh]"
               >
-                <div className="flex items-center justify-between mb-6 shrink-0">
+                <div className="flex items-center justify-between mb-4 shrink-0">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <Users className="w-6 h-6 text-primary dark:text-yellow-500" />
                     Daftar Peserta
@@ -300,6 +301,17 @@ export default function ScannerPage() {
                   <button onClick={() => setShowParticipantInfo(false)} className="text-slate-400 dark:text-zinc-500 hover:text-slate-900 dark:hover:text-white transition-colors bg-slate-50 dark:bg-white/5 p-2 rounded-full border border-slate-200 dark:border-transparent">
                     <XCircle className="w-6 h-6" />
                   </button>
+                </div>
+                
+                <div className="relative mb-4 shrink-0">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-zinc-500" />
+                  <input
+                    type="text"
+                    placeholder="Cari nama atau email..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-slate-50 dark:bg-[#151520] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm rounded-xl pl-10 pr-4 py-3 outline-none focus:border-primary dark:focus:border-yellow-500 transition-colors placeholder:text-slate-400 dark:placeholder:text-zinc-600"
+                  />
                 </div>
                 
                 <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-3">
@@ -311,25 +323,30 @@ export default function ScannerPage() {
                   ) : participants.length === 0 ? (
                     <div className="text-center py-10 text-slate-500 dark:text-zinc-500 text-sm">Belum ada peserta terdaftar.</div>
                   ) : (
-                    participants.map((p, idx) => (
-                      <div key={idx} className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 rounded-xl p-4 flex justify-between items-center shadow-sm">
-                        <div className="overflow-hidden">
-                          <p className="text-slate-900 dark:text-white font-medium truncate text-sm">{p.nama}</p>
-                          <p className="text-slate-500 dark:text-zinc-500 text-xs truncate">{p.email}</p>
+                    participants
+                      .filter(p => 
+                        p.nama.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                        p.email.toLowerCase().includes(searchQuery.toLowerCase())
+                      )
+                      .map((p, idx) => (
+                        <div key={idx} className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 rounded-xl p-4 flex justify-between items-center shadow-sm">
+                          <div className="overflow-hidden">
+                            <p className="text-slate-900 dark:text-white font-medium truncate text-sm">{p.nama}</p>
+                            <p className="text-slate-500 dark:text-zinc-500 text-xs truncate">{p.email}</p>
+                          </div>
+                          <div className="ml-3 shrink-0">
+                            {p.status === 'Hadir' ? (
+                              <span className="bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-bold border border-emerald-200 dark:border-emerald-500/30">
+                                Hadir
+                              </span>
+                            ) : (
+                              <span className="bg-slate-200 dark:bg-white/5 text-slate-600 dark:text-zinc-400 px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-medium border border-slate-300 dark:border-white/10">
+                                Antri
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <div className="ml-3 shrink-0">
-                          {p.status === 'Hadir' ? (
-                            <span className="bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-bold border border-emerald-200 dark:border-emerald-500/30">
-                              Hadir
-                            </span>
-                          ) : (
-                            <span className="bg-slate-200 dark:bg-white/5 text-slate-600 dark:text-zinc-400 px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-wider font-medium border border-slate-300 dark:border-white/10">
-                              Antri
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    ))
+                      ))
                   )}
                 </div>
               </motion.div>
