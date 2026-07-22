@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+const QRCode = require('qrcode');
 
 const smtpConfig = {
   host: 'mail.tactlink.com',
@@ -70,7 +71,15 @@ async function sendBlastEmails() {
         await new Promise(resolve => setTimeout(resolve, 13000));
       }
 
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${participant.ticketId}`;
+      // Generate QR Code menjadi buffer gambar (tanpa internet)
+      const qrBuffer = await QRCode.toBuffer(participant.ticketId, {
+        width: 300,
+        margin: 1,
+        color: {
+          dark: '#000000',
+          light: '#ffffff'
+        }
+      });
       
       const htmlFilePath = path.join(__dirname, 'tactlink-reminder.html');
       const baseHtml = fs.readFileSync(htmlFilePath, 'utf-8');
@@ -84,7 +93,14 @@ async function sendBlastEmails() {
         replyTo: 'fayiz.nugraha@tactlink.com',
         to: email,
         subject: `E-Ticket Registrasi: ${participant.ticketId} - TikTok Social Commerce`,
-        html: personalizedHtml
+        html: personalizedHtml,
+        attachments: [
+          {
+            filename: 'qrcode.png',
+            content: qrBuffer,
+            cid: 'qrcode_ticket' 
+          }
+        ]
       });
 
       console.log(`[${i + 1}/${recipients.length}] ✅ Terkirim ke: ${email} (Tiket: ${participant.ticketId})`);
